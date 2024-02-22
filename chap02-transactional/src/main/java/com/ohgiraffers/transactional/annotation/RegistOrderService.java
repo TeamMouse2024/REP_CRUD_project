@@ -1,6 +1,9 @@
 package com.ohgiraffers.transactional.annotation;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +23,7 @@ public class RegistOrderService {
         this.orderMapper = orderMapper;
     }
 
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void registNewOrder(OrderDTO orderInfo) {
 
         List<Integer> menuCodes = orderInfo.getOrderMenus()
@@ -67,6 +71,14 @@ public class RegistOrderService {
         Order order = new Order(orderInfo.getOrderDate(), orderInfo.getOrderTime(), totalOrderPrice);
         System.out.println("==================== order ====================");
         System.out.println(order);
+
+        orderMapper.registOrder(order);
+        System.out.println("[after insert] : " + order);
+
+        for(OrderMenu orderMenu : orderMenus) {
+            orderMenu.setOrderCode(order.getOrderCode());
+            orderMapper.registOrderMenu(orderMenu);
+        }
 
     }
 
