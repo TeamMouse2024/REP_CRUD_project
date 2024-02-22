@@ -4,3 +4,6 @@ spring:
     url: jdbc:mysql://localhost/menu
     username: ohgiraffers
     password: ohgiraffers
+
+mybatis:
+  mapper-locations: mappers/**/*.xml
