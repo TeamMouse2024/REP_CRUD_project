@@ -13,8 +13,11 @@ public class RegistOrderService {
 
     private MenuMapper menuMapper;
 
-    public RegistOrderService(MenuMapper menuMapper) {
+    private OrderMapper orderMapper;
+
+    public RegistOrderService(MenuMapper menuMapper, OrderMapper orderMapper) {
         this.menuMapper = menuMapper;
+        this.orderMapper = orderMapper;
     }
 
     public void registNewOrder(OrderDTO orderInfo) {
@@ -35,7 +38,50 @@ public class RegistOrderService {
         map.put("menuCodes", menuCodes);
 
         List<Menu> menus = menuMapper.findMenusByMenuCode(map);
+        System.out.println("==================== menus ====================");
+        System.out.println(menus);
 
+        int totalOrderPrice = calcTotalOrderPrice(orderInfo.getOrderMenus(), menus);
+        System.out.println("[totalOrderPrice] : " + totalOrderPrice);
+
+        /*
+        List<OrderMenu> orderMenus = new ArrayList<>();
+        for(int i = 0; i < orderInfo.getOrderMenus().size(); i++) {
+            OrderMenuDTO orderMenuDTO = orderInfo.getOrderMenus().get(i);
+            OrderMenu orderMenu = new OrderMenu(orderMenuDTO.getMenuCode(), orderMenuDTO.getOrderAmount());
+            orderMenus.add(orderMenu);
+        }
+        */
+
+        List<OrderMenu> orderMenus = new ArrayList<>(
+                orderInfo.getOrderMenus().stream()
+                        .map(dto -> {
+                            return new OrderMenu(dto.getMenuCode(), dto.getOrderAmount());
+                        }).collect(Collectors.toList())
+        );
+        System.out.println("==================== orderMenus ====================");
+        for(OrderMenu orderMenu : orderMenus) {
+            System.out.println(orderMenu);
+        }
+
+        Order order = new Order(orderInfo.getOrderDate(), orderInfo.getOrderTime(), totalOrderPrice);
+        System.out.println("==================== order ====================");
+        System.out.println(order);
+
+    }
+
+    private int calcTotalOrderPrice(List<OrderMenuDTO> orderMenus, List<Menu> menus) {
+
+        int totalOrderPrice = 0;
+
+        int orderMenuSize = orderMenus.size();
+        for(int i = 0; i < orderMenuSize; i++) {
+            OrderMenuDTO orderMenu = orderMenus.get(i);
+            Menu menu = menus.get(i);
+            totalOrderPrice += menu.getMenuPrice() * orderMenu.getOrderAmount();
+        }
+
+        return totalOrderPrice;
     }
 
 }
