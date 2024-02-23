@@ -1,4 +1,4 @@
-package com.revaluper.rep_crud_project;
+package com.revaluper.rep_crud_project.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
