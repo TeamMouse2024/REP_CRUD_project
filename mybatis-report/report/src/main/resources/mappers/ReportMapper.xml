@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revaluper.report.model.ReportMapper">
+
+<resultMap id="reportResultMap" type="com.revaluper.report.model.ReportDTO">
+    <id property="repNo" column="rep_no"/>
+    <result property="repTitle" column="rep_title"/>
+    <result property="repContent" column="rep_content"/>
+    <result property="repDate" column="rep_date"/>
+    <result property="repId" column="rep_id"/>
+    <result property="repPrc" column="rep_prc"/>
+</resultMap>
+
+    <select id="selectAllReport" resultMap="reportResultMap" parameterType="hashmap">
+        SELECT  rep_no
+                ,rep_title
+                ,rep_content
+                ,rep_date
+                ,rep_id
+                ,rep_prc
+          FROM  REPORT
+         WHERE 1=1
+        ORDER BY rep_no
+    </select>
+
+    <insert id="insertReport">
+        INSERT INTO report (
+                            rep_no
+                            ,rep_title
+                            ,rep_content
+                            ,rep_date
+                            ,rep_id
+                            ,rep_prc
+                            )
+        VALUES (
+                #{rep_no}
+                ,#{rep_title}
+                ,#{rep_content}
+                ,#{rep_date}
+                ,#{rep_id}
+                ,#{rep_prc}
+                )
+    </insert>
+</mapper>
