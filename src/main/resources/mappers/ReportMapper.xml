@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.revaluper.rep_crud_project.report.model.dao.ReportMapper">
+
+    <resultMap id="reportResultMap" type="com.revaluper.rep_crud_project.report.model.dto.ReportDTO">
+        <id property="repNo" column="rep_no"/>
+        <result property="repTitle" column="rep_title"/>
+        <result property="repContent" column="rep_content"/>
+        <result property="repDate" column="rep_date"/>
+        <result property="repId" column="rep_id"/>
+        <result property="repPrc" column="rep_prc"/>
+    </resultMap>
+            <!-- dao.ReportMapper의 메소드명이 같아아함.  -->
+    <select id="findReportList" resultMap="reportResultMap">
+        SELECT rep_no
+                ,rep_title
+                ,rep_content
+                ,rep_date
+                ,rep_id
+                ,rep_prc
+          from report
+         WHERE 1=1
+        ORDER BY rep_no
+    </select>
+
+</mapper>
