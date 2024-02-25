@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revaluper.crud.report.model.dao.ReportMapper">
+
+    <resultMap id="reportResultMap" type="com.revaluper.crud.report.model.dto.ReportDTO">
+        <id property="repNo" column="REP_NO" />
+        <result property="repTitle" column="REP_TITLE" />
+        <result property="repContent" column="REP_CONTENT" />
+        <result property="repDate" column="REP_DATE" />
+        <result property="repId" column="REP_ID" />
+        <result property="repPrc" column="REP_PRC" />
+    </resultMap>
+
+    <select id="findAllReport" resultMap="reportResultMap">
+        SELECT REP_NO
+                ,REP_TITLE
+                ,REP_CONTENT
+                ,REP_DATE
+                ,REP_ID
+                ,REP_PRC
+          FROM REPORT
+    </select>
+
+    <insert id="registReport" parameterType="com.revaluper.crud.report.model.dto.ReportDTO">
+        INSERT INTO REPORT(
+                                REP_NO
+                                ,REP_TITLE
+                                ,REP_CONTENT
+                                ,REP_DATE
+                                ,REP_ID
+                                ,REP_PRC
+                            )
+        VALUES (
+                    #{ repNo }
+                    ,#{ repTitle }
+                    ,#{ repContent }
+                    ,#{ repDate }
+                    ,#{ repId }
+                    ,#{ repPrc }
+                )
+    </insert>
+
+
+    <update id="modifyReport" parameterType="com.revaluper.crud.report.model.dto.ReportDTO">
+        UPDATE  REPORT
+           SET  REP_TITLE = #{ repTitle }
+                ,REP_CONTENT = #{ repContent }
+                ,REP_DATE = #{ repDate }
+                ,REP_ID = #{ repId }
+                ,REP_PRC = #{ repPrc }
+         WHERE  REP_NO = #{ repNo }
+    </update>
+
+    <delete id="deleteReport" parameterType="_int">
+        DELETE
+          FROM REPORT
+         WHERE REP_NO = #{ repNo }
+    </delete>
+
+</mapper>
