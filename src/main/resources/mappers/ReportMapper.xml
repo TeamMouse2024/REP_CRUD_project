@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revaluper.rep_crud_project.report.dao.ReportMapper">
+
+    <resultMap id="reportResultMap" type="com.revaluper.rep_crud_project.report.model.dto.ReportDTO">
+        <result property="repNo" column="REP_NO"/>
+        <result property="repTitle" column="REP_TITLE"/>
+        <result property="repContent" column="REP_CONTENT"/>
+        <result property="repDate" column="REP_DATE"/>
+        <result property="repId" column="REP_ID"/>
+        <result property="repPrc" column="REP_PRC"/>
+    </resultMap>
+
+    <select id="findAllReport" resultMap="reportResultMap">
+        SELECT REP_NO
+        ,REP_TITLE
+        ,REP_CONTENT
+        ,REP_DATE
+        ,REP_ID
+        ,REP_PRC
+        FROM REPORT
+    </select>
+
+</mapper>
