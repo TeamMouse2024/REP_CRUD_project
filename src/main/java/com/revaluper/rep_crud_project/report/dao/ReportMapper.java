@@ -21,7 +21,7 @@ public interface ReportMapper {
     int updateReport();
 
     //신고게시판 삭제
-    int deleteReport();
+    int deleteReport(@Param("repId") String repId);
 
 }
 

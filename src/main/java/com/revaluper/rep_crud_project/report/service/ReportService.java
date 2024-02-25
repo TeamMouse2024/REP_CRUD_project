@@ -22,4 +22,8 @@ public class ReportService {
     public ReportDTO find(String repId) {
         return reportMapper.findReport(repId);
     }
+    //삭제
+    public void delete(String repId) {
+        reportMapper.deleteReport(repId);
+    }
 }

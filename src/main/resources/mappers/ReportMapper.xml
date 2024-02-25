@@ -33,4 +33,9 @@
         FROM REPORT
         WHERE REP_ID = #{repId}
     </select>
+
+    <delete id="deleteReport">
+    DELETE FROM REPORT
+    WHERE REP_ID = #{repId}
+    </delete>
 </mapper>
