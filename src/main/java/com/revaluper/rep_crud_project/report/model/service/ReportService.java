@@ -7,7 +7,9 @@ import java.util.List;
 
 @Service
 public class ReportService {
-    public List<ReportDTO> findAllList() {
 
+    public List<ReportDTO> findAllList() {
+        //TODO: 추후 기능구현👍 (서버 안떠서 임시로 널로 리턴하게 변경했습니다)
+        return null;
     }
 }

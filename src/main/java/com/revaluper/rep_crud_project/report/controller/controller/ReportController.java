@@ -18,11 +18,9 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-    public String findReportList(Model model){
-
+    public List<ReportDTO> findReportList(Model model){
         List<ReportDTO> reportList = reportService.findAllList();
-
-
         return reportList;
     }
+
 }
