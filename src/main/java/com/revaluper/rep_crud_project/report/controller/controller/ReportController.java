@@ -25,7 +25,7 @@ public class ReportController {
     //삭제 - @DeleteMapping
     @ResponseBody
     @GetMapping
-    public List<ReportDTO> findReportList(){
+    public List<ReportDTO> findReportList() {
         System.out.println("신고게시판 전체조회 시작");
         List<ReportDTO> reportList = reportService.findAll();
         System.out.println("신고게시판 전체조회 끝");
@@ -41,13 +41,22 @@ public class ReportController {
         System.out.println("신고게시판 단일조회 끝 - 조회아이디 : " + repId);
         return report;
     }
-
+    //삭제
     @ResponseBody
     @DeleteMapping("/{repId}")
     public void deleteReport(@PathVariable String repId) {
         System.out.println("신고게시판 아이디 삭제 시작 - Id : " + repId);
         reportService.delete(repId);
         System.out.println("신고게시판 아이디 삭제 끝 - Id : " + repId);
+    }
+    //저장(insert)기능 추가
+    @ResponseBody
+    @PostMapping("/{repId}")
+    public ReportDTO insertReport(@PathVariable String repId) {
+        System.out.println("신고게시판 아이디 저장 시작 - Id : " + repId);
+        ReportDTO report = reportService.insert(repId);
+        System.out.println("신고게시판 아이디 저장 끝 - Id : " + repId);
+        return  report;
     }
 
 }

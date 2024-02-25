@@ -23,6 +23,8 @@ public interface ReportMapper {
     //신고게시판 삭제
     int deleteReport(@Param("repId") String repId);
 
+    //신고게시판 인서트
+    ReportDTO insertReport(String repId);
 }
 
 

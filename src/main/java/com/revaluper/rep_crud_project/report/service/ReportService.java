@@ -26,4 +26,6 @@ public class ReportService {
     public void delete(String repId) {
         reportMapper.deleteReport(repId);
     }
+    //저장
+    public ReportDTO insert(String repId){ return reportMapper.insertReport(repId); }
 }

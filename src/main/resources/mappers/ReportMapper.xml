@@ -38,4 +38,16 @@
     DELETE FROM REPORT
     WHERE REP_ID = #{repId}
     </delete>
+
+    <select id="insertReport" resultMap="insertResultMap">
+        SELECT REP_NO
+        ,REP_TITLE
+        ,REP_CONTENT
+        ,REP_DATE
+        ,REP_ID
+        ,REP_PRC
+        FROM REPORT
+        WHERE REP_ID = #{repId}
+    </select>
+
 </mapper>
