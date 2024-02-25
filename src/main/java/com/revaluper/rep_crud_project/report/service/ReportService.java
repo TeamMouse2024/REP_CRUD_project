@@ -18,4 +18,8 @@ public class ReportService {
         return reportMapper.findAllReport();
     }
 
+    //단일조회
+    public ReportDTO find(String repId) {
+        return reportMapper.findReport(repId);
+    }
 }

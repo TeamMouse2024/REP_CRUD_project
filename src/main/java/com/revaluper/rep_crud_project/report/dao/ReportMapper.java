@@ -2,6 +2,7 @@ package com.revaluper.rep_crud_project.report.dao;
 
 import com.revaluper.rep_crud_project.report.model.dto.ReportDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface ReportMapper {
     List<ReportDTO> findAllReport();
 
     //신고게시판 단일조회
-    ReportDTO findReport();
+    ReportDTO findReport(@Param("repId") String repId);
 
     //신고게시판 등록
     void registReport(ReportDTO newReport);
