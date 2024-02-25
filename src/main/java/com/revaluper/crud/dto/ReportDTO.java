@@ -1,27 +1,27 @@
-package com.revaluper.rep_crud_project.report.model.dto;
+package com.revaluper.crud.dto;
 
-
-import java.sql.Date;
 
 public class ReportDTO implements java.io.Serializable {
 
     private int repNo;              // 신고번호
     private String repTitle;        // 신고 제목
     private String repContent;      // 신고내용
-    private java.sql.Date repDate;  // 신고날짜
+    private String repDate;         // 신고날짜
     private String repId;           // 신고아이디
     private String repPrc;          // 신고처리여부
+    private Long hits;              // 조회수(임의로 만들었음)
 
     public ReportDTO() {
     }
 
-    public ReportDTO(int repNo, String repTitle, String repContent, Date repDate, String repId, String repPrc) {
+    public ReportDTO(int repNo, String repTitle, String repContent, String repDate, String repId, String repPrc, Long hits) {
         this.repNo = repNo;
         this.repTitle = repTitle;
         this.repContent = repContent;
         this.repDate = repDate;
         this.repId = repId;
         this.repPrc = repPrc;
+        this.hits = hits;
     }
 
     public int getRepNo() {
@@ -48,11 +48,11 @@ public class ReportDTO implements java.io.Serializable {
         this.repContent = repContent;
     }
 
-    public Date getRepDate() {
+    public String getRepDate() {
         return repDate;
     }
 
-    public void setRepDate(Date repDate) {
+    public void setRepDate(String repDate) {
         this.repDate = repDate;
     }
 
@@ -72,5 +72,24 @@ public class ReportDTO implements java.io.Serializable {
         this.repPrc = repPrc;
     }
 
+    public Long getHits() {
+        return hits;
+    }
 
+    public void setHits(Long hits) {
+        this.hits = hits;
+    }
+
+    @Override
+    public String toString() {
+        return "ReportDTO{" +
+                "repNo=" + repNo +
+                ", repTitle='" + repTitle + '\'' +
+                ", repContent='" + repContent + '\'' +
+                ", repDate='" + repDate + '\'' +
+                ", repId='" + repId + '\'' +
+                ", repPrc='" + repPrc + '\'' +
+                ", hits=" + hits +
+                '}';
+    }
 }

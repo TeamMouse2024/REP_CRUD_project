@@ -1,9 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/jdbctest
-    username: ohgiraffers
-    password: ohgiraffers
+    url: jdbc:mysql://localhost:3306/menudb
+    username: minsup
+    password: m
+    generate-unique-name: true
 
 mybatis:
   mapper-locations: mappers/**/*.xml

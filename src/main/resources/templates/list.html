@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymelieaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, tr, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/save">글쓰기</a>
+    <a href="/update/">수정</a>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>날짜</th>
+        <th>아이디</th>
+        <th>처리여부</th>
+        <th>조회수</th>
+    </tr>
+    <tr th:each="report: ${reportList}">
+        <td th:text="${ report. repNo}"></td>
+        <td th:text="${ report.repTitle}" href="@{|/${board.repNo}|}"></td>>
+        <td th:text="${ report.repContent}"></td>
+        <td th:text="${ report.repDate}"></td>
+        <td>
+            <a th:text="${ report.repId}" href="@{|/${board.repId}|}"></a>
+        </td>
+        <td th:text="${ report.repPrc}"></td>
+        <td th:text="${ report.hits}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

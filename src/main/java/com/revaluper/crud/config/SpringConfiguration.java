@@ -1,10 +1,10 @@
-package com.revaluper.rep_crud_project.config;
+package com.revaluper.crud.config;
 
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.revaluper.rep_crud_project")
+@ComponentScan(basePackages = "com.revaluper.crud")
 public class SpringConfiguration {
 }
