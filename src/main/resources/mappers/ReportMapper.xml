@@ -39,15 +39,21 @@
     WHERE REP_ID = #{repId}
     </delete>
 
-    <select id="insertReport" resultMap="reportResultMap">
-        SELECT REP_NO
-        ,REP_TITLE
-        ,REP_CONTENT
-        ,REP_DATE
-        ,REP_ID
-        ,REP_PRC
-        FROM REPORT
-        WHERE REP_ID = #{repId}
-    </select>
+    <insert id="insertReport" parameterType="com.revaluper.rep_crud_project.report.model.dto.ReportDTO">
+        INSERT INTO REPORT (
+        REP_TITLE,
+        REP_CONTENT,
+        REP_DATE,
+        REP_ID,
+        REP_PRC
+        )
+        VALUES(
+        #{repTitle},
+        #{repContent},
+        #{repDate},
+        #{repId},
+        #{repPrc}
+        )
+    </insert>
 
 </mapper>

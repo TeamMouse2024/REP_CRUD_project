@@ -30,4 +30,5 @@ public class ReportService {
     public void save(ReportDTO report) {
         reportMapper.insertReport(report);
     }
+
 }

@@ -21,7 +21,7 @@ public interface ReportMapper {
     int deleteReport(@Param("repId") String repId);
 
     //신고 인서트
-    ReportDTO insertReport(@Param("repId") String repId);
+    void insertReport(ReportDTO newReport);
 }
 
 
