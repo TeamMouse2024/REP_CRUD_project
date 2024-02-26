@@ -39,7 +39,7 @@
     WHERE REP_ID = #{repId}
     </delete>
 
-    <select id="insertReport" resultMap="insertResultMap">
+    <select id="insertReport" resultMap="reportResultMap">
         SELECT REP_NO
         ,REP_TITLE
         ,REP_CONTENT

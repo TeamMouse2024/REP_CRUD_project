@@ -51,12 +51,12 @@ public class ReportController {
     }
     //저장(insert)기능 추가
     @ResponseBody
-    @PostMapping("/{repId}")
-    public ReportDTO insertReport(@PathVariable String repId) {
-        System.out.println("신고게시판 아이디 저장 시작 - Id : " + repId);
-        ReportDTO report = reportService.insert(repId);
-        System.out.println("신고게시판 아이디 저장 끝 - Id : " + repId);
-        return  report;
+    @PostMapping("/insert")
+    public ReportDTO insertReport(@PathVariable ReportDTO report) {
+        System.out.println("신고게시판 데이터 삽입 시작");
+        ReportDTO insertedReport = reportService.save(report);
+        System.out.println("신고게시판 데이터 삽입 끝");
+        return insertedReport;
     }
 
 }
