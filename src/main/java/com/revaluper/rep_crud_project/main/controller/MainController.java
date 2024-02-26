@@ -1,6 +1,7 @@
 package com.revaluper.rep_crud_project.main.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 public class MainController {
 
@@ -10,7 +11,7 @@ public class MainController {
     }
 
     @GetMapping("main")
-    public void main() {
+    public void main() {}
 
-    }
+
 }

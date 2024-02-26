@@ -1,14 +1,15 @@
 package com.revaluper.rep_crud_project.report.model.dto;
 
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
-public class ReportDTO implements java.io.Serializable {
+public class ReportDTO implements Serializable {
 
     private int repNo;              // 신고번호
     private String repTitle;        // 신고 제목
     private String repContent;      // 신고내용
-    private java.sql.Date repDate;  // 신고날짜
+    private Date repDate;           // 신고날짜
     private String repId;           // 신고아이디
     private String repPrc;          // 신고처리여부
 
@@ -72,5 +73,15 @@ public class ReportDTO implements java.io.Serializable {
         this.repPrc = repPrc;
     }
 
-
+    @Override
+    public String toString() {
+        return "ReportDTO{" +
+                "repNo=" + repNo +
+                ", repTitle='" + repTitle + '\'' +
+                ", repContent='" + repContent + '\'' +
+                ", repDate=" + repDate +
+                ", repId='" + repId + '\'' +
+                ", repPrc='" + repPrc + '\'' +
+                '}';
+    }
 }

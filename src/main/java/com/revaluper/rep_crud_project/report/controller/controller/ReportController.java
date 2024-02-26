@@ -1,15 +1,14 @@
 package com.revaluper.rep_crud_project.report.controller.controller;
 
 import com.revaluper.rep_crud_project.report.model.dto.ReportDTO;
-import com.revaluper.rep_crud_project.report.model.service.ReportService;
+import com.revaluper.rep_crud_project.report.service.ReportService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/report")
 public class ReportController {
 
     private final ReportService reportService;
@@ -18,9 +17,46 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-    public List<ReportDTO> findReportList(Model model){
-        List<ReportDTO> reportList = reportService.findAllList();
+    //요청이 들어왔을 때 실행되는 순서
+    //controller -> service -> mapper(dao) -> xml
+    //조회 - @GetMapping
+    //저장 - @PostMapping
+    //수정 - @PutMapping
+    //삭제 - @DeleteMapping
+    @ResponseBody
+    @GetMapping
+    public List<ReportDTO> findReportList() {
+        System.out.println("신고게시판 전체조회 시작");
+        List<ReportDTO> reportList = reportService.findAll();
+        System.out.println("신고게시판 전체조회 끝");
         return reportList;
+    }
+
+    //단일 조회컨트롤러
+    @ResponseBody
+    @GetMapping("/{repId}")
+    public ReportDTO findReport(@PathVariable String repId) {
+        System.out.println("신고게시판 단일조회 시작 - 조회아이디 : " + repId);
+        ReportDTO report = reportService.find(repId);
+        System.out.println("신고게시판 단일조회 끝 - 조회아이디 : " + repId);
+        return report;
+    }
+    //삭제
+    @ResponseBody
+    @DeleteMapping("/{repId}")
+    public void deleteReport(@PathVariable String repId) {
+        System.out.println("신고게시판 아이디 삭제 시작 - Id : " + repId);
+        reportService.delete(repId);
+        System.out.println("신고게시판 아이디 삭제 끝 - Id : " + repId);
+    }
+    //저장(insert)기능 추가
+    @ResponseBody
+    @PostMapping("/insert")
+    public ReportDTO insertReport(@PathVariable ReportDTO report) {
+        System.out.println("신고게시판 데이터 삽입 시작");
+        ReportDTO insertedReport = reportService.save(report);
+        System.out.println("신고게시판 데이터 삽입 끝");
+        return insertedReport;
     }
 
 }
