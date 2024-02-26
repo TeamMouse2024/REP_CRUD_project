@@ -70,6 +70,7 @@ public class ReportController {
         reportService.deleteReport(repNo.getRepNo());
         System.out.println("신고 내역 삭제 완료!!!");
 
+
         model.addAttribute("repNo", repNo);
 
         return "/main";
