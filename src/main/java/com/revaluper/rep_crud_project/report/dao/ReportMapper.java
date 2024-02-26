@@ -14,9 +14,6 @@ public interface ReportMapper {
     //신고게시판 단일조회
     ReportDTO findReport(@Param("repId") String repId);
 
-    //신고게시판 등록
-    void registReport(ReportDTO newReport);
-
     //신고게시판 수정
     int updateReport();
 

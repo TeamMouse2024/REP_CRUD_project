@@ -73,5 +73,15 @@ public class ReportDTO implements Serializable {
         this.repPrc = repPrc;
     }
 
-
+    @Override
+    public String toString() {
+        return "ReportDTO{" +
+                "repNo=" + repNo +
+                ", repTitle='" + repTitle + '\'' +
+                ", repContent='" + repContent + '\'' +
+                ", repDate=" + repDate +
+                ", repId='" + repId + '\'' +
+                ", repPrc='" + repPrc + '\'' +
+                '}';
+    }
 }

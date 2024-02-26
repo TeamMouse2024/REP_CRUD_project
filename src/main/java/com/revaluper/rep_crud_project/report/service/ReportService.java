@@ -27,7 +27,7 @@ public class ReportService {
         reportMapper.deleteReport(repId);
     }
     //저장
-    public ReportDTO save(ReportDTO report) {
-        return reportMapper.insertReport(report.getRepId());
+    public void save(ReportDTO report) {
+        reportMapper.insertReport(report);
     }
 }
