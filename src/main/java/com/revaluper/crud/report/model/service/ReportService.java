@@ -29,7 +29,7 @@ public class ReportService {
         reportMapper.modifyReport(modiReport);
     }
 
-    public void deleteReport(int num) {
-        reportMapper.deleteReport(num);
+    public void deleteReport(int repNo) {
+        reportMapper.deleteReport(repNo);
     }
 }

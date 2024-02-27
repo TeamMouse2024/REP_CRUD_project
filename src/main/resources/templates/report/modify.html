@@ -5,23 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>신고번호</th>
-            <th>신고제목</th>
-            <th>신고내용</th>
-            <th>신고일</th>
-            <th>신고아이디</th>
-            <th>신고처리여부</th>
-        </tr>
-        <tr th:each="report : ${ modiReport }">
-            <td th:text="${ report.repNo }"></td>
-            <td th:text="${ report.repTitle }"></td>
-            <td th:text="${ report.repContent }"></td>
-            <td th:text="${ report.repDate }"></td>
-            <td th:text="${ report.repId }"></td>
-            <td th:text="${ report.repPrc }"></td>
-        </tr>
-    </table>
+    <form action="/report/modify" method="post">
+        <label>신고 번호 : </label><input type="number" name="repNo"><br>
+        <label>신고 제목 : </label><input type="text" name="repTitle"><br>
+        <label>신고 내용 : </label><input type="text" name="repContent"><br>
+        <label>신고일 </label><input type="text" name="repDate"><br>
+        <label>신고 아이디 : </label><input type="text" name="repId"><br>
+        <label>신고 처리상태 : </label><input type="text" name="repPrc"><br>
+        <input type="submit" value="등록">
+    </form>
 </body>
 </html>

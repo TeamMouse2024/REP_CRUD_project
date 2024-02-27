@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-    <h3>신고 삭제 되었습니다.</h3>
+    <form action="/report/delete" method="post">
+        <label>삭제 번호 : </label><input type="number" name="repNo"><br>
+        <input type="submit" value="신고 삭제">
+    </form>
 </body>
 </html>

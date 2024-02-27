@@ -14,6 +14,5 @@ public interface ReportMapper {
 
     void modifyReport(ReportDTO modiReport);
 
-    void deleteReport(int num);
-
+    void deleteReport(int repNo);
 }
