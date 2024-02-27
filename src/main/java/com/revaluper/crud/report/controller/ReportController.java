@@ -45,33 +45,36 @@ public class ReportController {
     }
 
     @GetMapping("/modify")
-    public String modifyReport(Model model, ReportDTO modiReport) {
+    public void modifyReport() {}
 
-        modiReport.setRepTitle("신고제목2 수정");
-        modiReport.setRepContent("신고내용 수정입니다2");
-        modiReport.setRepDate("20240127");
-        modiReport.setRepId("user002");
-        modiReport.setRepPrc("승인");
-        modiReport.setRepNo(2);
+    @PostMapping("/modify")
+    public String modifyReport(int repNo, String repTitle, String repContent, String repDate, String repId, String repPrc) {
 
-        System.out.println("신고 내용 수정 완료!!!");
+        ReportDTO modiReport = new ReportDTO();
+        modiReport.setRepNo(repNo);
+        modiReport.setRepTitle(repTitle);
+        modiReport.setRepContent(repContent);
+        modiReport.setRepDate(repDate);
+        modiReport.setRepId(repId);
+        modiReport.setRepPrc(repPrc);
+
         reportService.modifyReport(modiReport);
+        System.out.println("신고 내용 수정 완료!!!");
 
         System.out.println(modiReport);
-        model.addAttribute("modiReport", modiReport);
 
-        return "/report/modify";
+        return "/main";
     }
 
     @GetMapping("/delete")
-    public String deleteReport(Model model, ReportDTO repNo) {
-        repNo.setRepNo(6);
+    public void deleteReport() {}
 
-        reportService.deleteReport(repNo.getRepNo());
+    @PostMapping("/delete")
+    public String deleteReport(int repNo) {
+
+        reportService.deleteReport(repNo);
+
         System.out.println("신고 내역 삭제 완료!!!");
-
-
-        model.addAttribute("repNo", repNo);
 
         return "/main";
     }
