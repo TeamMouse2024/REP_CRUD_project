@@ -42,13 +42,13 @@ public class ReportController {
     // 3.리턴값에는 보여주고자 하는 html의 경로.
     // 4.메서드에서 모델객체(Model)를 받아서 model.addAttribute("html에서 사용할이름", 넣어줄객체)
     //GET + http://localhost:8080/report
-    @GetMapping()
+    @GetMapping("/report")
     public String findReportList(Model model) {
         System.out.println("신고게시판 전체조회 시작");
         List<ReportDTO> reportList = reportService.findAll();
         System.out.println("신고게시판 전체조회 끝");
         model.addAttribute("reportList", reportList);
-        return "report/reportlist";
+        return "reportList";
     }
 
     //GET + http://localhost:8080/report/신고번호

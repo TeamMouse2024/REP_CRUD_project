@@ -9,14 +9,14 @@ public class ReportDTO implements Serializable {
     private int repNo;              // 신고번호
     private String repTitle;        // 신고 제목
     private String repContent;      // 신고내용
-    private Date repDate;           // 신고날짜
+    private String repDate;           // 신고날짜
     private String repId;           // 신고아이디
     private String repPrc;          // 신고처리여부
 
     public ReportDTO() {
     }
 
-    public ReportDTO(int repNo, String repTitle, String repContent, Date repDate, String repId, String repPrc) {
+    public ReportDTO(int repNo, String repTitle, String repContent, String repDate, String repId, String repPrc) {
         this.repNo = repNo;
         this.repTitle = repTitle;
         this.repContent = repContent;
@@ -49,11 +49,11 @@ public class ReportDTO implements Serializable {
         this.repContent = repContent;
     }
 
-    public Date getRepDate() {
+    public String getRepDate() {
         return repDate;
     }
 
-    public void setRepDate(Date repDate) {
+    public void setRepDate(String repDate) {
         this.repDate = repDate;
     }
 
