@@ -25,22 +25,38 @@
 
     <select id="findReport" resultMap="reportResultMap">
         SELECT REP_NO
-        ,REP_TITLE
-        ,REP_CONTENT
-        ,REP_DATE
-        ,REP_ID
-        ,REP_PRC
+            ,REP_TITLE
+            ,REP_CONTENT
+            ,REP_DATE
+            ,REP_ID
+            ,REP_PRC
         FROM REPORT
-        WHERE REP_ID = #{repId}
+        WHERE REP_NO = #{repNo}
     </select>
 
     <delete id="deleteReport">
-    DELETE FROM REPORT
-    WHERE REP_ID = #{repId}
+        DELETE FROM REPORT
+        WHERE REP_NO = #{repNo}
     </delete>
 
     <insert id="insertReport" parameterType="com.revaluper.rep_crud_project.report.model.dto.ReportDTO">
         INSERT INTO REPORT (
+            REP_TITLE,
+            REP_CONTENT,
+            REP_ID,
+            REP_PRC
+        )
+        VALUES(
+            #{repTitle},
+            #{repContent},
+            now(),
+            #{repId},
+            #{repPrc}
+        )
+    </insert>
+
+    <update id="updateReport" parameterType="com.revaluper.rep_crud_project.report.model.dto.ReportDTO">
+        update INTO REPORT (
         REP_TITLE,
         REP_CONTENT,
         REP_DATE,
@@ -54,6 +70,6 @@
         #{repId},
         #{repPrc}
         )
-    </insert>
+    </update>
 
 </mapper>

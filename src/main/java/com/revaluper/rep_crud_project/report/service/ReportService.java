@@ -19,16 +19,21 @@ public class ReportService {
     }
 
     //단일조회
-    public ReportDTO find(String repId) {
-        return reportMapper.findReport(repId);
+    public ReportDTO find(String repNo) {
+        return reportMapper.findReport(repNo);
     }
+
     //삭제
-    public void delete(String repId) {
-        reportMapper.deleteReport(repId);
+    public void delete(String repNo) {
+        reportMapper.deleteReport(repNo);
     }
+
     //저장
     public void save(ReportDTO report) {
         reportMapper.insertReport(report);
     }
-
+    //업데이트
+    public void update(ReportDTO report) {
+        reportMapper.updateReport(report);
+    }
 }

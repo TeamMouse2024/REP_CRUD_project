@@ -12,16 +12,17 @@ public interface ReportMapper {
     List<ReportDTO> findAllReport();
 
     //신고게시판 단일조회
-    ReportDTO findReport(@Param("repId") String repId);
+    ReportDTO findReport(@Param("repNo") String repNo);
 
-    //신고게시판 수정
-    int updateReport();
+    //신고게시판 수정 , 업데이트
+    int updateReport(ReportDTO repId);
 
     //신고게시판 삭제
-    int deleteReport(@Param("repId") String repId);
+    int deleteReport(@Param("repNo") String repNo);
 
     //신고 인서트
     void insertReport(ReportDTO newReport);
+
 }
 
 
